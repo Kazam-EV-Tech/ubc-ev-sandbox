@@ -65,7 +65,7 @@ modules:
         # registry:
         #   id: dediregistry
         #   config:
-        #     url: https://api.beckn.one/registry/dedi
+        #     url: https://fabric.nfh.global/registry/dedi
         #     registryName: subscribers.beckn.one
         #     retry_max: 3
         #     retry_wait_min: 100ms

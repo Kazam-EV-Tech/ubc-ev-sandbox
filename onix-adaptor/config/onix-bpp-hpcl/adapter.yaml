@@ -74,11 +74,13 @@ modules:
         registry:
           id: dediregistry
           config:
-            url: https://api.beckn.one/registry/dedi
+            url: https://fabric.nfh.global/registry/dedi
             registryName: subscribers.beckn.one
+            allowedNetworkIDs: "ubc.nbsl.org.in/NBSL_Prod_reference_registry"
+            timeout: 30
             retry_max: 3
-            retry_wait_min: 100ms
-            retry_wait_max: 500ms
+            retry_wait_min: 1s
+            retry_wait_max: 5s
         keyManager:
           id: simplekeymanager
           config:
@@ -154,15 +156,17 @@ modules:
         registry:
           id: dediregistry
           config:
-            url: https://api.beckn.one/registry/dedi
+            url: https://fabric.nfh.global/registry/dedi
             registryName: subscribers.beckn.one
+            allowedNetworkIDs: "ubc.nbsl.org.in/NBSL_Prod_reference_registry"
+            timeout: 30
             retry_max: 3
-            retry_wait_min: 100ms
-            retry_wait_max: 500ms
+            retry_wait_min: 1s
+            retry_wait_max: 5s
         registry:
           id: dediregistry
           config:
-            url: https://api.beckn.one/registry/dedi
+            url: https://fabric.nfh.global/registry/dedi
             registryName: subscribers.beckn.one
             retry_max: 3
             retry_wait_min: 100ms
