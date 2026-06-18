@@ -22,22 +22,22 @@ pluginManager:
 
 # OpenTelemetry (OTLP) - metrics and traces sent to OTEL collector, then to Loki/backend
 plugins:
-  # otelsetup:
-  #   id: otelsetup
-  #   config:
-  #     serviceName: "hpcl-ubc-otel"
-  #     serviceVersion: "1.0.0"
-  #     environment: "production"
-  #     domain: "ev_charging"
-  #     otlpEndpoint: "otel-collector-bpp:4317"
-  #     enableMetrics: "true"
-  #     networkMetricsGranularity: "2min"
-  #     networkMetricsFrequency: "4min"
-  #     enableTracing: "true"
-  #     enableLogs: "true"
-  #     timeInterval: "5"
-  #     auditFieldsConfig: "https://raw.githubusercontent.com/manendrapalsingh/ubc-ev-sandbox/refs/heads/feat/v0.9.5/audit-fields.yaml"
-  #     cacheTTL: "3600"
+  otelsetup:
+    id: otelsetup
+    config:
+      serviceName: "hpcl-ubc-kazam-energy-otel"
+      serviceVersion: "1.0.0"
+      environment: "production"
+      domain: "ev_charging"
+      otlpEndpoint: "otel-collector-bpp:4317"
+      enableMetrics: "true"
+      networkMetricsGranularity: "2min"
+      networkMetricsFrequency: "4min"
+      enableTracing: "true"
+      enableLogs: "true"
+      timeInterval: "5"
+      auditFieldsConfig: "https://raw.githubusercontent.com/manendrapalsingh/ubc-ev-sandbox/refs/heads/feat/v0.9.5/audit-fields.yaml"
+      cacheTTL: "3600"
 
 modules:
   # BPP Receiver - Receives requests via HTTP and routes to backend via HTTP API

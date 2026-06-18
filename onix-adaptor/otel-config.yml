@@ -76,6 +76,12 @@ exporters:
       authenticator: oauth2client/hpcl
     compression: gzip
 
+  otlp_http/collector2_bpcl:
+    endpoint: https://obs.prod.ubc.nbsl.org.in
+    auth:
+      authenticator: oauth2client/bpcl
+    compression: gzip
+
 extensions:
   oauth2client/kazam:
     token_url: https://obs-auth.prod.ubc.nbsl.org.in/oauth2/token
@@ -89,13 +95,26 @@ extensions:
     client_secret: 2AA053AE-5393-4784-9AD6-A9665EC7B092
     endpoint_params:
       audience: otel-collector-network
+  oauth2client/bpcl:
+    token_url: https://obs-auth.prod.ubc.nbsl.org.in/oauth2/token
+    client_id: "otel-collector-bpcl-kzm"
+    client_secret: "3c14d91a-04ee-4fc8-bc8c-95587fa37699"
+    endpoint_params:
+      audience: otel-collector-network
   health_check:
     endpoint: 0.0.0.0:13133
   zpages:
     endpoint: 0.0.0.0:55679
 
 service:
-  extensions: [health_check, zpages, oauth2client/kazam, oauth2client/hpcl]
+  extensions:
+    [
+      health_check,
+      zpages,
+      oauth2client/kazam,
+      oauth2client/hpcl,
+      oauth2client/bpcl,
+    ]
   pipelines:
     # App-level: ALL metrics -> Prometheus (stays local on the node)
     # metrics/app:
@@ -107,7 +126,12 @@ service:
     metrics/network:
       receivers: [otlp]
       processors: [filter/network_metrics, batch]
-      exporters: [otlp_http/collector2_kazam, otlp_http/collector2_hpcl]
+      exporters:
+        [
+          otlp_http/collector2_kazam,
+          otlp_http/collector2_hpcl,
+          otlp_http/collector2_bpcl,
+        ]
 
     # App-level: ALL traces -> transform Beckn IDs -> Jaeger (stays local on the node)
     # traces/app:
@@ -119,13 +143,23 @@ service:
     traces/network:
       receivers: [otlp]
       processors: [filter/network_traces, transform/beckn_ids, batch]
-      exporters: [otlp_http/collector2_kazam, otlp_http/collector2_hpcl]
+      exporters:
+        [
+          otlp_http/collector2_kazam,
+          otlp_http/collector2_hpcl,
+          otlp_http/collector2_bpcl,
+        ]
 
     # Network-level: ALL audit logs -> Collector 2
     logs/network:
       receivers: [otlp]
       processors: [filter/network_logs, batch]
-      exporters: [otlp_http/collector2_kazam, otlp_http/collector2_hpcl]
+      exporters:
+        [
+          otlp_http/collector2_kazam,
+          otlp_http/collector2_hpcl,
+          otlp_http/collector2_bpcl,
+        ]
 
   telemetry:
     logs:
