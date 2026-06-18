@@ -28,7 +28,7 @@ plugins:
   #     serviceName: "hpcl-ubc-otel"
   #     serviceVersion: "1.0.0"
   #     environment: "production"
-  #     domain: "UBC"
+  #     domain: "ev_charging"
   #     otlpEndpoint: "otel-collector-bpp:4317"
   #     enableMetrics: "true"
   #     networkMetricsGranularity: "2min"
