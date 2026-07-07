@@ -75,7 +75,7 @@ services:
   onix-bpp-plugin-kazam-uat:
     # Use pre-built image from Docker Hub
     image: manendrapalsingh/onix-adapter:v0.9.5
-    container_name: onix-bpp-plugin-kazam
+    container_name: onix-bpp-plugin-kazam-uat
     ports:
       - "9002:8002"
     volumes:
@@ -125,7 +125,7 @@ services:
   onix-bpp-plugin-hpcl-uat:
     # Use pre-built image from Docker Hub
     image: manendrapalsingh/onix-adapter:v0.9.5
-    container_name: onix-bpp-plugin-hpcl
+    container_name: onix-bpp-plugin-hpcl-uat
     ports:
       - "9004:8002"
     volumes:
@@ -172,10 +172,10 @@ services:
     networks:
       - onix-network
   
-  onix-bpp-plugin-bpcl:
+  onix-bpp-plugin-bpcl-uat:
     # Use pre-built image from Docker Hub
     image: manendrapalsingh/onix-adapter:v0.9.5
-    container_name: onix-bpp-plugin-bpcl
+    container_name: onix-bpp-plugin-bpcl-uat
     ports:
       - "9006:8002"
     volumes:
