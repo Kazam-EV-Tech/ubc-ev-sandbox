@@ -163,14 +163,14 @@ modules:
             retry_max: 3
             retry_wait_min: 1s
             retry_wait_max: 5s
-        registry:
-          id: dediregistry
-          config:
-            url: https://fabric.nfh.global/registry/dedi
-            registryName: subscribers.beckn.one
-            retry_max: 3
-            retry_wait_min: 100ms
-            retry_wait_max: 500ms
+        # registry:
+        #   id: dediregistry
+        #   config:
+        #     url: https://fabric.nfh.global/registry/dedi
+        #     registryName: subscribers.beckn.one
+        #     retry_max: 3
+        #     retry_wait_min: 100ms
+        #     retry_wait_max: 500ms
         keyManager:
           id: simplekeymanager
           config:
